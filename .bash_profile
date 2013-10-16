@@ -12,9 +12,17 @@ export PATH="/usr/local/bin:$PATH":~/bin
 
 alias ll="ls -Glha"
 
-# Global IP Address
+# Clear Apple System Logs
 
-alias ip="curl -s http://checkip.dyndns.org | sed 's/[a-zA-Z/<> :]//g'"
+alias clear-apple-system-logs="sudo rm -rfv /private/var/log/asl/*.asl"
+
+# Clear DNS Cache
+
+alias clear-cache="sudo killall -HUP mDNSResponder"
+
+# Update .bash_profile
+
+alias update-bash-profile="source ~/.bash_profile"
 
 # Fix Typos...
 
@@ -29,6 +37,21 @@ alias cd..="cd .."
 function serve {
 	open http://localhost:1337/
 	python -m SimpleHTTPServer 1337
+}
+
+# Get Local / Global IP Addresses
+
+function ip {
+
+	if [ "$1" = "-g" ]; then
+		curl -s http://checkip.dyndns.org | sed 's/[a-zA-Z/<> :]//g'
+	elif [ "$1" = "-l" ]; then
+		ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'
+	else
+		echo -e "Local & Global IP Address\n=========================\nOptions: -g for global IP or -l for local IP\n"
+		curl -s http://checkip.dyndns.org | sed 's/[a-zA-Z/<> :]//g'
+		ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'
+	fi
 }
 
 # New Front End Project
