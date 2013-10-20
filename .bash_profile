@@ -28,6 +28,10 @@ alias update-bash-profile="source ~/.bash_profile"
 
 alias cd..="cd .."
 
+# List Functions Defined in .bash_profile or .bashrc
+
+alias list-functions="compgen -A function"
+
 # =========
 # Functions
 # =========
