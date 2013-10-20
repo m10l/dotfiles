@@ -9,27 +9,21 @@ export PATH="/usr/local/bin:$PATH":~/bin
 # =======
 
 # Nicer List output
-
 alias ll="ls -Glha"
 
 # Clear Apple System Logs
-
 alias clear-apple-system-logs="sudo rm -rfv /private/var/log/asl/*.asl"
 
 # Clear DNS Cache
-
 alias clear-cache="sudo killall -HUP mDNSResponder"
 
 # Update .bash_profile
-
 alias update-bash-profile="source ~/.bash_profile"
 
 # Fix Typos...
-
 alias cd..="cd .."
 
 # List Functions Defined in .bash_profile or .bashrc
-
 alias list-functions="compgen -A function"
 
 # =========
@@ -37,14 +31,12 @@ alias list-functions="compgen -A function"
 # =========
 
 # Simple Web Server
-
 function serve {
 	open http://localhost:1337/
 	python -m SimpleHTTPServer 1337
 }
 
 # Get Local / Global IP Addresses
-
 function ip {
 
 	if [ "$1" = "-g" ]; then
@@ -59,7 +51,6 @@ function ip {
 }
 
 # New Front End Project
-
 function new-front-end-project {
 
 	# Make our new directory
@@ -89,7 +80,6 @@ function new-front-end-project {
 }
 
 # Set Up New Angular Project
-
 function new-angular-site {
 	
 	# Make our new directory
@@ -104,7 +94,6 @@ function new-angular-site {
 }
 
 # Set Up New WordPress Vagrant Box
-
 function new-wordpress-vagrant-box {
 
 	# Go to our Sites directory
@@ -128,7 +117,6 @@ function new-wordpress-vagrant-box {
 }
 
 # Search History
-
 function search-history {
 	history | grep $1
 }
