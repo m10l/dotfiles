@@ -17,6 +17,9 @@ alias clear-apple-system-logs="sudo rm -rfv /private/var/log/asl/*.asl"
 # Clear DNS Cache
 alias clear-cache="sudo killall -HUP mDNSResponder"
 
+# Edit .bash_profile in Sublime Text 2
+alias edit-bash-profile="subl ~/.bash_profile"
+
 # Refresh .bash_profile
 alias refresh-bash-profile="source ~/.bash_profile"
 
