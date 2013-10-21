@@ -17,8 +17,8 @@ alias clear-apple-system-logs="sudo rm -rfv /private/var/log/asl/*.asl"
 # Clear DNS Cache
 alias clear-cache="sudo killall -HUP mDNSResponder"
 
-# Update .bash_profile
-alias update-bash-profile="source ~/.bash_profile"
+# Refresh .bash_profile
+alias refresh-bash-profile="source ~/.bash_profile"
 
 # Fix Typos...
 alias cd..="cd .."
