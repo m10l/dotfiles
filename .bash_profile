@@ -50,12 +50,12 @@ function md() {
 }
 
 # Search History
-function search-history {
+function search-history() {
 	history | grep $1
 }
 
 # Get Local / Global IP Addresses
-function ip {
+function ip() {
 
 	if [ "$1" = "-g" ]; then
 		curl -s http://checkip.dyndns.org | sed 's/[a-zA-Z/<> :]//g'
@@ -69,21 +69,21 @@ function ip {
 }
 
 # Simple Web Server
-function serve {
+function serve() {
 	open http://localhost:1337/
 	python -m SimpleHTTPServer 1337
 }
 
 # New Mean Stack
 # see mean.io for instructions
-function mean-app(){
+function mean-app() {
 	git clone https://github.com/linnovate/mean.git $1
 	cd $1
 	npm install
 }
 
 # New Front End Project
-function new-front-end-project {
+function new-front-end-project() {
 
 	# Make our new directory
 	mkdir ~/Sites/$1
@@ -112,7 +112,7 @@ function new-front-end-project {
 }
 
 # Set Up New Angular Project
-function new-angular-site {
+function new-angular-site() {
 	
 	# Make our new directory
 	mkdir ~/Sites/$1
@@ -126,7 +126,7 @@ function new-angular-site {
 }
 
 # Set Up New WordPress Vagrant Box
-function new-wordpress-vagrant-box {
+function new-wordpress-vagrant-box() {
 
 	# Go to our Sites directory
 	cd ~/Sites
