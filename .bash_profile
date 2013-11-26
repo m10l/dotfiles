@@ -23,20 +23,35 @@ alias edit-bash-profile="subl ~/.bash_profile"
 # Refresh .bash_profile
 alias refresh-bash-profile="source ~/.bash_profile"
 
-# Fix Typos...
-alias cd..="cd .."
-
 # List Functions Defined in .bash_profile or .bashrc
 alias list-functions="compgen -A function"
+
+# Fix Typos...
+alias cd..="cd .."
+alias cd~="cd ~"
 
 # =========
 # Functions
 # =========
 
-# Simple Web Server
-function serve {
-	open http://localhost:1337/
-	python -m SimpleHTTPServer 1337
+# CD to the path of the front Finder window
+function cd-finder() {
+	target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
+	if [ "$target" != "" ]; then
+		cd "$target"; pwd
+	else
+		echo 'No Finder window found' >&2
+	fi
+}
+
+# Mkdir and CD into it
+function md() {
+	mkdir $1 && cd $1
+}
+
+# Search History
+function search-history {
+	history | grep $1
 }
 
 # Get Local / Global IP Addresses
@@ -51,6 +66,20 @@ function ip {
 		curl -s http://checkip.dyndns.org | sed 's/[a-zA-Z/<> :]//g'
 		ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'
 	fi
+}
+
+# Simple Web Server
+function serve {
+	open http://localhost:1337/
+	python -m SimpleHTTPServer 1337
+}
+
+# New Mean Stack
+# see mean.io for instructions
+function mean-app(){
+	git clone https://github.com/linnovate/mean.git $1
+	cd $1
+	npm install
 }
 
 # New Front End Project
@@ -117,11 +146,6 @@ function new-wordpress-vagrant-box {
 	# Open the WordPress directory in Sublime Text
 	subl wordpress
 
-}
-
-# Search History
-function search-history {
-	history | grep $1
 }
 
 # =================
